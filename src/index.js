@@ -8,8 +8,9 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom'
 
 import store from './redux/store'
 import Login from './comtainers/login/login'
-import Resgister from './comtainers/resgister/resgister'
+import Register from './comtainers/register/register'
 import Dashbaord from './comtainers/dashbaord/dashbaord'
+import './assets/index.less'
 
 
 // 渲染到页面
@@ -18,7 +19,7 @@ ReactDOM.render((
         <BrowserRouter>
             <Switch>
                 <Route path='/login' component={Login}/>
-                <Route path='/resgister' component={Resgister}/>
+                <Route path='/register' component={Register}/>
                 <Route component={Dashbaord}/>
             </Switch>
         </BrowserRouter>
