@@ -10,20 +10,20 @@
   2.2. 定义Model(与集合对应, 可以操作集合)
 3. 向外暴露获取Model的方法
  */
-// 1. 连接数据库
-// 1.1. 引入mongoose
-const mongoose = require('mongoose')
+//  连接数据库
+// 引入mongoose
+const mongoose = require('mongoose');
 
-// 1.2. 连接指定数据库(URL只有数据库是变化的)
-mongoose.connect('mongodb://localhost:27017/lagou')
-// 1.3. 获取连接对象
-const conn = mongoose.connection
-// 1.4. 绑定连接完成的监听(用来提示连接成功)
+//  连接指定数据库
+mongoose.connect('mongodb://localhost:27017/lagou');
+//  获取连接对象
+const conn = mongoose.connection;
+//  绑定连接完成的监听,提示连接成功
 conn.on('connected',function () {
     console.log('数据库连接成功')
-})
-// 2. 定义对应特定集合的Model
-// 2.1. 字义Schema(描述文档结构)
+});
+//  定义对应特定集合的Model
+//  字义Schema描述文档结构
 const userSchema = mongoose.Schema({
     // 用户名
     'name': {type: String, 'required': true},
@@ -41,10 +41,24 @@ const userSchema = mongoose.Schema({
     // 公司名称
     'company': {'type': String},
     // 工资
-    'money': {'type': String}})
-// 2.2. 定义Model(与集合对应, 可以操作集合)
-mongoose.model('user',userSchema)
-// 3. 向外暴露获取Model的方法
+    'money': {'type': String}});
+//  定义Model，与集合对应, 可以操作集合
+mongoose.model('user',userSchema);
+
+// 定义聊天集合的文档结构
+const chatSchema = mongoose.Schema({
+    from: {type: String, required: true}, // 发送用户的id
+    to: {type: String, required: true}, // 接收用户的id
+    chat_id: {type: String, required: true}, // from_to组成字符串
+    content: {type: String, required: true}, // 内容
+    read: {type:Boolean, default: false}, // 标识是否已读
+    create_time: {type: Number} // 创建时间
+});
+// 定义能操作聊天集合数据的Model
+mongoose.model('chat', chatSchema);
+
+
+//  向外暴露获取Model的方法
 module.exports = {
     getModel(name) {
         return mongoose.model(name)

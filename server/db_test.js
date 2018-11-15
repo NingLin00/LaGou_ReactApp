@@ -4,7 +4,7 @@
 const mongoose = require('mongoose')
 
 // 1.2. 连接指定数据库(URL只有数据库是变化的)
-mongoose.connect('mongodb://localhost:27017/lagou_test')
+mongoose.connect('mongodb://localhost:27017/lagou')
 // 1.3. 获取连接对象
 const conn = mongoose.connection
 // 1.4. 绑定连接完成的监听(用来提示连接成功)
@@ -69,7 +69,7 @@ function testUpdate() {
 //testUpdate()
 // 3.4. 通过Model的remove()删除匹配的数据
 function testDelete() {
-    UserModel.remove({_id: '5be4041a736b4417ac1354c0'},function (err, result) {
+    UserModel.remove({type: 'hr'},function (err, result) {
         console.log('testDelete',err,result)
     })
 }

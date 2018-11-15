@@ -20,15 +20,14 @@ class Register extends React.Component{
         pwd2:'',
         type:'seeker',//用户类型
     }
-    // 更新指定属性名的状态
-    handelChange (name,val){
-        this.setState({[name]:val})
-    };
-    //切换到登录
-    goLogin = () =>{
-        this.props.history.replace('/Login')
-    };
-    //处理注册
+    
+	// 更新指定属性名的状态
+    handelChange (name,val){this.setState({[name]:val})};
+    
+	//切换到登录
+    goLogin = () =>{this.props.history.replace('/login')};
+    
+	//处理注册
     handelRegister = () =>{
         // 触发redux中register action调用
         this.props.register(this.state)
@@ -36,9 +35,12 @@ class Register extends React.Component{
 
     render(){
         const {user} = this.props
-        if(user.redirectTo){//如果user的redirectTo有值，则跳转到指定路径
+		
+		//如果user的redirectTo有值，则跳转到指定路径
+        if(user.redirectTo){
             return <Redirect to={user.redirectTo}/>
         }
+		
         return (
             <div className='logo-comtainer'>
                 <NavBar>拉勾网</NavBar>
@@ -59,8 +61,8 @@ class Register extends React.Component{
                         <WhiteSpace/>
                         <RadioItem checked={this.state.type==='seeker'}
                                    onClick={() =>{this.handelChange('type','seeker')}}>我要求职</RadioItem>
-                        <RadioItem checked={this.state.type==='HR'}
-                                   onClick={() =>{this.handelChange('type','HR')}}>我要招人</RadioItem>
+                        <RadioItem checked={this.state.type==='hr'}
+                                   onClick={() =>{this.handelChange('type','hr')}}>我要招人</RadioItem>
                         <Button type='primary' onClick={this.handelRegister}>注册</Button>
                         <Button onClick={this.goLogin}>已有账号</Button>
                     </List>
