@@ -1,3 +1,4 @@
+使用webstorm开发工具
 
 1)	本项目为一个前后台分离的仿拉勾网招聘平台的SPA单页应用, 包括前端应用和后端应用
 
@@ -5,7 +6,10 @@
 
 3)	前端: 使用 React + ES6 + Webpack 等技术
 
-4)	后端: 使用 Node.js + express + mongodb + socketIO 等技术
+4)	后端：使用Node.js + express + mongodb + socketIO等技术
+
+5)  需要安装mongodb数据库
+
 
 //用到的相关插件或库
 
